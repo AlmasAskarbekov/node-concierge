@@ -14,7 +14,7 @@ function listenToHosts(hosts: Concierge.Host[]) {
     const getEvents = host => {
         var client = getDockerClient(host);
 
-        client.getEvents({}, (err, data) => {
+        client.getEvents({}, (err, data: any) => {
             if (err) {
                 log.error(`[${host.hostname}] Failed to stream Docker events: ${err}`);
                 return;
@@ -33,8 +33,8 @@ function eventHandler(eventJson: string) {
     var status = (event.status || 'N/A').toUpperCase();
     var prefix = `[${shortDockerId}:${status}] `;
     log.info(prefix + 'Container event detected. Updating ports...');
-    emitter.host('All', `Container ${shortDockerId} state emitted '${status}'`);   
-    
+    emitter.host('All', `Container ${shortDockerId} state emitted '${status}'`);
+
     updatePorts()
         .then(() => log.info(prefix + 'Successfully updated ports'))
         .catch(error => log.error(prefix + 'Failed: ' + error));
