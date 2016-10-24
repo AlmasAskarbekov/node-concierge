@@ -37,6 +37,7 @@ exit
 The output of `cat` is what is entered into the `SSH Private Key` field in the Hosts view when creating a new Host
 
  #### Why Linux?
+ 
  Linux has better support for Docker and the SSH server.  
  Windows requires Windows 10 and Hyper-V. These requirements may conflict or may simply be too high.  
  The Windows client is also more difficult to configure and the documentation mostly ignores the Windows client. 
